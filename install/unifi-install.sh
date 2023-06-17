@@ -17,15 +17,19 @@ msg_info "Installing Dependencies"
 $STD apt-get install -y curl
 $STD apt-get install -y sudo
 $STD apt-get install -y mc
-$STD apt-get install -y apt-transport-https
+#$STD apt-get install -y apt-transport-https
 msg_ok "Installed Dependencies"
 
 msg_info "Installing OpenJDK"
+echo -e "deb http://ftp.debian.org/debian bullseye main" >/etc/apt/sources.list.d/debian-bullseye-main.list
+$STD apt-get update
 $STD apt-get install -y openjdk-11-jre-headless
 $STD apt-mark hold openjdk-11-*
 msg_ok "Installed OpenJDK"
 
 msg_info "Installing MongoDB"
+wget -qL http://security.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb
+$STD dpkg -i libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb
 wget -qL https://repo.mongodb.org/apt/ubuntu/dists/bionic/mongodb-org/3.6/multiverse/binary-amd64/mongodb-org-server_3.6.23_amd64.deb
 $STD dpkg -i mongodb-org-server_3.6.23_amd64.deb
 msg_ok "Installed MongoDB"
@@ -41,7 +45,7 @@ motd_ssh
 customize
 
 msg_info "Cleaning up"
-rm -rf mongodb-org-server_3.6.23_amd64.deb
+rm -rf mongodb-org-server_3.6.23_amd64.deb libssl1.0.0_1.0.2n-1ubuntu5.13_amd64.deb
 $STD apt-get autoremove
 $STD apt-get autoclean
 msg_ok "Cleaned"
