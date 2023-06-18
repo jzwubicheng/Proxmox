@@ -191,7 +191,7 @@ advanced_settings() {
 
   if PW1=$(whiptail --inputbox "\nSet Root Password (needed for root ssh access)" 9 58 --title "PASSWORD(leave blank for automatic login)" 3>&1 1>&2 2>&3); then
     if [ -z $PW1 ]; then
-      PW1="Automatic Login"
+      PW1="12345"
       PW=""
     else
       PW="-password $PW1"
@@ -478,7 +478,7 @@ build_container() {
   TEMP_DIR=$(mktemp -d)
   pushd $TEMP_DIR >/dev/null
   if [ "$var_os" == "alpine" ]; then
-    export FUNCTIONS_FILE_PATH="$(curl -s https://raw.githubusercontent.com/tteck/jzwubicheng/main/misc/alpine-install.func)"
+    export FUNCTIONS_FILE_PATH="$(curl -s https://raw.githubusercontent.com/jzwubicheng/main/misc/alpine-install.func)"
   else
     export FUNCTIONS_FILE_PATH="$(curl -s https://raw.githubusercontent.com/jzwubicheng/Proxmox/main/misc/install.func)"
   fi
