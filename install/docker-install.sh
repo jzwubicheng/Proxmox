@@ -24,7 +24,7 @@ get_latest_release() {
 }
 
 DOCKER_LATEST_VERSION=$(get_latest_release "moby/moby")
-PORTAINER_LATEST_VERSION=$(get_latest_release "portainer/portainer")
+PORTAINER_LATEST_VERSION=$(get_latest_release "6053537/portainer-ce")
 DOCKER_COMPOSE_LATEST_VERSION=$(get_latest_release "docker/compose")
 
 msg_info "Installing Docker $DOCKER_LATEST_VERSION"
