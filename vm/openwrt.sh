@@ -242,7 +242,7 @@ function advanced_settings() {
 
   if VM_NAME=$(whiptail --inputbox "Set Hostname" 8 58 openwrt --title "HOSTNAME" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
     if [ -z $VM_NAME ]; then
-      HN="openwrt"
+      HN="immortalwrt"
     else
       HN=$(echo ${VM_NAME,,} | tr -d ' ')
     fi
