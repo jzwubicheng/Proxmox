@@ -23,8 +23,8 @@ get_latest_release() {
   curl -sL https://api.github.com/repos/$1/releases/latest | grep '"tag_name":' | cut -d'"' -f4
 }
 
-DOCKER_LATEST_VERSION=$(get_latest_release "docker/cli")
-PORTAINER_LATEST_VERSION=$(get_latest_release "6053537/portainer-ce")
+DOCKER_LATEST_VERSION=$(get_latest_release "moby/moby")
+PORTAINER_LATEST_VERSION=$(get_latest_release "portainer/portainer")
 DOCKER_COMPOSE_LATEST_VERSION=$(get_latest_release "docker/compose")
 
 msg_info "Installing Docker $DOCKER_LATEST_VERSION"
