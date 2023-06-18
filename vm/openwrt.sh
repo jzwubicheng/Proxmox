@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # Copyright (c) 2021-2023 tteck
-# Author: tteck (tteckster)
+# Author: jzwubicheng
 #         Jon Spriggs (jontheniceguy)
 # License: MIT
-# https://github.com/tteck/Proxmox/raw/main/LICENSE
+# https://github.com/jzwubicheng/Proxmox/raw/main/LICENSE
 # Based on work from https://i12bretro.github.io/tutorials/0405.html
 
 function header_info {
@@ -410,7 +410,7 @@ msg_ok "Virtual Machine ID is ${CL}${BL}$VMID${CL}."
 msg_info "Getting URL for OpenWrt Disk Image"
 
 regex='<strong>Current Stable Release - OpenWrt ([^/]*)<\/strong>' && response=$(curl -s https://openwrt.org) && [[ $response =~ $regex ]] && stableVersion="${BASH_REMATCH[1]}"
-URL=https://downloads.openwrt.org/releases/$stableVersion/targets/x86/64/openwrt-$stableVersion-x86-64-generic-ext4-combined.img.gz
+URL=https://github.com/SuLingGG/OpenWrt-Rpi/releases/download/x86-64/immortalwrt-x86-64-generic-ext4-combined.img.gz
 
 sleep 2
 msg_ok "${CL}${BL}${URL}${CL}"
@@ -453,7 +453,7 @@ qm set $VMID \
   -scsi0 ${DISK1_REF},size=512M \
   -boot order=scsi0 \
   -description "# OpenWrt VM
-### https://github.com/tteck/Proxmox
+### https://github.com/jzwubicheng/Proxmox
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/D1D7EP4GF)" >/dev/null
 msg_ok "OpenWrt VM ${CL}${BL}(${HN})"
 msg_info "OpenWrt is being started in order to configure the network interfaces."
@@ -469,7 +469,7 @@ send_line_to_vm "uci delete network.lan"
 send_line_to_vm "uci set network.lan=interface"
 send_line_to_vm "uci set network.lan.device=eth0"
 send_line_to_vm "uci set network.lan.proto=static"
-send_line_to_vm "uci set network.lan.ipaddr=192.168.2.1"
+send_line_to_vm "uci set network.lan.ipaddr=192.168.10.250"
 send_line_to_vm "uci set network.lan.netmask=255.255.255.0"
 send_line_to_vm "uci set firewall.@zone[1].input='ACCEPT'"
 send_line_to_vm "uci set firewall.@zone[1].forward='ACCEPT'"
