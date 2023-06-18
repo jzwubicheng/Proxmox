@@ -410,7 +410,7 @@ msg_ok "Virtual Machine ID is ${CL}${BL}$VMID${CL}."
 msg_info "Getting URL for OpenWrt Disk Image"
 
 regex='<strong>Current Stable Release - OpenWrt ([^/]*)<\/strong>' && response=$(curl -s https://openwrt.org) && [[ $response =~ $regex ]] && stableVersion="${BASH_REMATCH[1]}"
-URL=https://github.com/coolsnowwolf/lede/releases/download/20230609/openwrt-rockchip-R23.5.6-friendlyelec_nanopi-r6c-squashfs-sysupgrade.img.gz
+URL=https://downloads.openwrt.org/releases/$stableVersion/targets/x86/64/openwrt-$stableVersion-x86-64-generic-ext4-combined.img.gz
 
 sleep 2
 msg_ok "${CL}${BL}${URL}${CL}"
