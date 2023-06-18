@@ -30,7 +30,7 @@ msg_ok "Installed Docker"
 get_latest_release() {
   curl -sL https://api.github.com/repos/$1/releases/latest | grep '"tag_name":' | cut -d'"' -f4
 }
-PORTAINER_LATEST_VERSION=$(get_latest_release "portainer/portainer")
+PORTAINER_LATEST_VERSION=$(get_latest_release "6053537/portainer-ce")
 DOCKER_COMPOSE_LATEST_VERSION=$(get_latest_release "docker/compose")
 
 read -r -p "Would you like to add Portainer? <y/N> " prompt
