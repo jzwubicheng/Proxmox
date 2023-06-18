@@ -44,7 +44,7 @@ if [[ "${prompt,,}" =~ ^(y|yes)$ ]]; then
     --restart=always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
-    portainer/portainer-ce:latest
+    6053537/portainer-ce:latest
   msg_ok "Installed Portainer $PORTAINER_LATEST_VERSION"
 fi
 
