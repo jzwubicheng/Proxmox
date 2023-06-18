@@ -30,7 +30,7 @@ catch_errors
 
 function default_settings() {
   CT_TYPE="1"
-  PW=""
+  PW="12345"
   CT_ID=$NEXTID
   HN=$NSAPP
   DISK_SIZE="$var_disk"
@@ -45,8 +45,8 @@ function default_settings() {
   NS=""
   MAC=""
   VLAN=""
-  SSH="no"
-  FUSE="no"
+  SSH="yes"
+  FUSE="yes"
   VERB="no"
   echo_default
 }
